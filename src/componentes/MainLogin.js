@@ -1,18 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import Celular from "../assets/img/phones-2x.png"
 import Instagram from "../assets/img/instagram-logo-14.png"
-import "../assets/style.css";
+import "../assets/style-login.css";
 
 function MainLogin() {
 
-    let login = document.querySelector("#login");
-    // let login = document.getElementById("login");
+    const [username, setUsername] = useState("");
+    const [password, setPasswrd] = useState("");
 
-    // if (login == "Lívia") {
-    //     alert("Acesso permitido!")
-    // } else {
-    //     alert("Acesso negado!")
-    // }
+    const login = () => {
+        if (username == "Aluno") {
+            if (password == "senha") {
+                alert("Bem-vindo(a)!! :D")
+            } else {
+                alert("Senha incorreta!")
+            }
+        } else {
+            alert("Acesso negado!")
+        }
+    }
 
     return (
         <div>
@@ -25,9 +31,21 @@ function MainLogin() {
                         <fieldset>
                             <img width="174px" src={Instagram} alt=""></img>
                             <form>
-                                <input id="login" type="text" placeholder="Telefone, nome de usuário ou email"></input>
-                                <input id="senha" type="password" placeholder="Senha"></input>
-                                <button>Entrar</button>
+                                <input 
+                                    type="text" 
+                                    placeholder="Telefone, nome de usuário ou email" 
+                                    value={username} 
+                                    onChange={(e) => setUsername(e.target.value)}
+                                >
+                                </input>
+                                <input 
+                                    type="password" 
+                                    placeholder="Senha" 
+                                    value={password} 
+                                    onChange={(e) => setPasswrd(e.target.value)}
+                                >
+                                </input>
+                                <button onClick={login}>Entrar</button>
                             </form>
                             <section className="login">
                                 <div className="section-ou">
